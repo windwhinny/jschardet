@@ -136,12 +136,14 @@ jschardet.Latin1Prober = function() {
             return 0.01;
         }
         
-        var total = 0;
+        var total = 0,
+            confidence;
+            
         for( var i = 0; i < this._mFreqCounter.length; i++ ) {
             total += this._mFreqCounter[i];
         }
         if( total < 0.01 ) {
-            constants = 0.0;
+            confidence = 0.0;
         } else {
             confidence = (this._mFreqCounter[3] / total) - (this._mFreqCounter[1] * 20 / total);
         }
